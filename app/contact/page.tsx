@@ -1,13 +1,13 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Mail, Phone, MapPin, Send, Check } from "lucide-react"
-import Header from "@/components/header"
-import { AnimatedBackground } from "@/components/animated-background"
+import { Mail, Phone, MapPin, Send } from "lucide-react"
+import PageLayout from "@/components/page-layout"
+import BackLink from "@/components/back-link"
+import SuccessScreen from "@/components/success-screen"
+import { inputClasses, textareaClasses } from "@/lib/constants"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,48 +25,23 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <main className="relative min-h-screen bg-lorenzo-dark">
-        <AnimatedBackground />
-        <Header />
-        <div className="relative z-10 pt-24 pb-20 px-6 md:px-12">
-          <div className="max-w-2xl mx-auto text-center py-20">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <div className="w-24 h-24 bg-lorenzo-accent rounded-full flex items-center justify-center mx-auto mb-8">
-                <Check className="w-12 h-12 text-black" />
-              </div>
-              <h2 className="text-4xl font-black text-white uppercase mb-6">Message Sent</h2>
-              <p className="text-white/60 text-lg mb-8">
-                Thank you for reaching out. We will get back to you as soon as possible.
-              </p>
-              <Link href="/">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="px-8 py-4 bg-lorenzo-accent text-black font-bold uppercase rounded-lg"
-                >
-                  Return Home
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
+      <PageLayout>
+        <div className="max-w-2xl mx-auto">
+          <SuccessScreen
+            title="Message Sent"
+            message="Thank you for reaching out. We will get back to you as soon as possible."
+            buttonText="Return Home"
+            buttonHref="/"
+          />
         </div>
-      </main>
+      </PageLayout>
     )
   }
 
   return (
-    <main className="relative min-h-screen bg-lorenzo-dark">
-      <AnimatedBackground />
-      <Header />
-
-      <div className="relative z-10 pt-24 pb-20 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-lorenzo-accent transition-colors mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-bold uppercase">Back to Home</span>
-          </Link>
+    <PageLayout>
+      <div className="max-w-6xl mx-auto">
+        <BackLink href="/" label="Back to Home" />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +126,7 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-white/30 focus:border-lorenzo-accent focus:outline-none transition-colors"
+                      className={inputClasses}
                       placeholder="Enter your name"
                     />
                   </div>
@@ -162,7 +137,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-white/30 focus:border-lorenzo-accent focus:outline-none transition-colors"
+                      className={inputClasses}
                       placeholder="your@email.com"
                     />
                   </div>
@@ -175,7 +150,7 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-white/30 focus:border-lorenzo-accent focus:outline-none transition-colors"
+                    className={inputClasses}
                     placeholder="How can we help?"
                   />
                 </div>
@@ -187,7 +162,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={6}
-                    className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-white placeholder-white/30 focus:border-lorenzo-accent focus:outline-none transition-colors resize-none"
+                    className={textareaClasses}
                     placeholder="Tell us more about your inquiry..."
                   />
                 </div>
@@ -203,9 +178,8 @@ export default function ContactPage() {
                 </motion.button>
               </form>
             </motion.div>
-          </div>
         </div>
       </div>
-    </main>
+    </PageLayout>
   )
 }

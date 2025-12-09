@@ -26,11 +26,11 @@ export default function AnimatedTextureCanvas() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     container.appendChild(renderer.domElement)
 
-    const material = new THREE.MeshBasicMaterial({
+    const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       transparent: true,
     })
-    material.defines = { USE_UV: "" }
+    ;(material as any).defines = { USE_UV: "" }
 
     material.onBeforeCompile = (shader) => {
       shader.uniforms.time = gu.time

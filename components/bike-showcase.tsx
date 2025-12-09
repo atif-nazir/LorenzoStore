@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { InteractiveClean } from "@/components/interactive-clean"
+import { InteractiveClean } from "@/components/clean"
 import { motion } from "framer-motion"
 
 interface AnimatedCounterProps {

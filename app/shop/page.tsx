@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import Header from "@/components/header"
-import { AnimatedBackground } from "@/components/animated-background"
+import { AnimatedBackground } from "@/components/background"
 import { helmets } from "@/lib/helmets"
 
 function ArrowLeftIcon({ className }: { className?: string }) {

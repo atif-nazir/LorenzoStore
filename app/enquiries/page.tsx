@@ -7,7 +7,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, Building2, Users, Truck, Handshake, Check, Send } from "lucide-react"
 import Header from "@/components/header"
-import { AnimatedBackground } from "@/components/animated-background"
+import { AnimatedBackground } from "@/components/background"
 
 const enquiryTypes = [
   {

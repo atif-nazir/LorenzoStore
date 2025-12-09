@@ -1,28 +1,3 @@
-# dependencies
 node_modules
-.pnp.*
-
-# builds
 .next
-out
-dist
-build
-
-# env and config
-.env*
-!.env.example
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# editor
-.DS_Store
-*.swp
-*.swo
-*.orig
-.idea
-.vscode
 

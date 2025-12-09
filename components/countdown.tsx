@@ -63,9 +63,6 @@ export function RaceDayCountdown() {
             >
               New Drop
             </p>
-            <p className="text-white/60 text-sm md:text-base font-bold uppercase tracking-widest mt-2">
-              Next Product Launch
-            </p>
           </div>
         </motion.div>
       </div>

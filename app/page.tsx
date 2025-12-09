@@ -1,15 +1,15 @@
 import Header from "@/components/header"
-import HeroSection from "@/components/hero-section"
-import MissionSection from "@/components/mission-section"
-import RiderTechSection from "@/components/rider-tech-section"
+import HeroSection from "@/components/hero"
+import MissionSection from "@/components/mission"
+import RiderTechSection from "@/components/tech"
 import BikeShowcase from "@/components/bike-showcase"
 import HelmetHall from "@/components/helmet-hall"
-import SocialSection from "@/components/social-section"
+import SocialSection from "@/components/social"
 import Footer from "@/components/footer"
-import MasonryGallerySection from "@/components/masonry-gallery-section"
+import MasonryGallerySection from "@/components/gallery-masonry"
 import Image from "next/image"
-import { RaceDayCountdown } from "@/components/race-day-countdown"
-import { AnimatedBackground } from "@/components/animated-background"
+import { RaceDayCountdown } from "@/components/countdown"
+import { AnimatedBackground } from "@/components/background"
 
 export default function Home() {
   return (

@@ -2,8 +2,8 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-import InteractivePortrait from "./interactive-portrait"
-import SignatureMarqueeSection from "./signature-marquee-section"
+import InteractivePortrait from "./portrait"
+import SignatureMarqueeSection from "./marquee"
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)

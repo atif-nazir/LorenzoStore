@@ -1,4 +1,4 @@
-// interactive-portrait.tsx
+// portrait.tsx
 
 "use client"
 

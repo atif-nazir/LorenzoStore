@@ -1,10 +1,10 @@
-import GallerySection from "@/components/gallery-section"
-import ScrollCollageSection from "@/components/scroll-collage-section"
-import StoreSection from "@/components/store-section"
-import PartnersSection from "@/components/partners-section"
-import TrackSplitSection from "@/components/track-split-section"
-import TestimonialSection from "@/components/testimonial-section"
-import HelmetHall from "@/components/helmet-hall-bk"
+import GallerySection from "@/components/gallery"
+import ScrollCollageSection from "@/components/collage"
+import StoreSection from "@/components/store"
+import PartnersSection from "@/components/partners"
+import TrackSplitSection from "@/components/track-split"
+import TestimonialSection from "@/components/testimonial"
+import HelmetHall from "@/components/helmet-hall-backup"
 
 import Link from "next/link"
 

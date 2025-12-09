@@ -4,8 +4,8 @@ import { Suspense } from "react"
 import { Canvas } from "@react-three/fiber"
 import { Environment, PerspectiveCamera } from "@react-three/drei"
 import { motion } from "framer-motion"
-import Helmet3DModel from "./helmet-3d-model"
-import InfiniteLogoSlider from "./infinite-logo-slider"
+import Helmet3DModel from "./helmet-model"
+import InfiniteLogoSlider from "./logo-slider"
 import Link from "next/link"
 
 function LoadingFallback() {
