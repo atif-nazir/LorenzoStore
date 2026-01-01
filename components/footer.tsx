@@ -105,7 +105,7 @@ export default function Footer() {
                   <Suspense fallback={<LoadingFallback />}>
                     <Helmet3DModel modelPath="/3d/helmet-lorenzo.glb" />
                   </Suspense>
-                  <Environment preset="city" />
+                {/* Environment preset removed to avoid runtime HDR fetch errors; relying on ambient/directional/point lights instead */}
                 </Canvas>
               </div>
 
