@@ -5,9 +5,11 @@ import { useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
+import { toast } from "sonner"
 import Header from "@/components/header"
 import { AnimatedBackground } from "@/components/background"
 import { getHelmetById, helmets } from "@/lib/helmets"
+import { inquiryApi } from "@/lib/api/inquiries"
 
 function ArrowLeftIcon({ className }: { className?: string }) {
   return (
@@ -45,10 +47,28 @@ function InquiryForm() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+
+    try {
+      await inquiryApi.create({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message || undefined,
+        productId: selectedHelmet?.id,
+      })
+      
+      setSubmitted(true)
+      toast.success("Inquiry submitted successfully!")
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to submit inquiry. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -166,10 +186,11 @@ function InquiryForm() {
 
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-lorenzo-accent text-black font-black uppercase rounded-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all"
+            disabled={isSubmitting}
+            className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-lorenzo-accent text-black font-black uppercase rounded-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <SendIcon className="w-5 h-5" />
-            Submit Inquiry
+            {isSubmitting ? "Submitting..." : "Submit Inquiry"}
           </button>
         </form>
 

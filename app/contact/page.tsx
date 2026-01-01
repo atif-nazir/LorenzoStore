@@ -3,11 +3,13 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { toast } from "sonner"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import PageLayout from "@/components/page-layout"
 import BackLink from "@/components/back-link"
 import SuccessScreen from "@/components/success-screen"
 import { inputClasses, textareaClasses } from "@/lib/constants"
+import { contactApi } from "@/lib/api/contacts"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,10 +19,27 @@ export default function ContactPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+
+    try {
+      await contactApi.create({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      })
+      
+      setSubmitted(true)
+      toast.success("Message sent successfully!")
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to send message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -169,12 +188,13 @@ export default function ContactPage() {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-lorenzo-accent text-black font-black uppercase rounded-xl hover:bg-white transition-colors"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-lorenzo-accent text-black font-black uppercase rounded-xl hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </motion.button>
               </form>
             </motion.div>

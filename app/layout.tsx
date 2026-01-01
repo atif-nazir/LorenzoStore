@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Roboto, Libre_Baskerville, Alex_Brush, Oswald } from "next/font/google"
 import SmoothScroll from "@/components/smooth-scroll"
 import Preloader from "@/components/preloader"
+import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
 const roboto = Roboto({
@@ -71,6 +72,7 @@ export default function RootLayout({
       >
         <Preloader />
         <SmoothScroll>{children}</SmoothScroll>
+        <Toaster />
         <Analytics />
       </body>
     </html>
