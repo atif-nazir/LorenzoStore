@@ -16,10 +16,9 @@ cd LorenzoStore
 2. Install dependencies (choose one):
 
 ```bash
-# npm
-npm ci
-# or pnpm
-# pnpm install
+npm install
+# or 
+pnpm install
 ```
 
 3. Start the frontend dev server:
@@ -35,7 +34,8 @@ pnpm dev
 ```bash
 cd server
 npm install
-npm run dev
+npm run build 
+npm start
 ```
 
 > 💡 Create a `.env` file for backend config (e.g. `MONGO_URI`, `JWT_SECRET`) if you use the API server.
@@ -45,7 +45,7 @@ npm run dev
 ## 🧰 Tech Stack
 
 - Frontend: **Next.js**, **React**, **TypeScript**, **Tailwind CSS**
-- Backend (optional): **Express**, **TypeScript**, **Mongoose** (in `/server`)
+- Backend: **Express**, **TypeScript**, **Mongoose** (in `/server`)
 - Tools: ESLint, TypeScript, Vercel for deployment
 
 ---
