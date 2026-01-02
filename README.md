@@ -1,6 +1,8 @@
 # Lorenzo Store 🛒
 
 **Lorenzo Store** is a sample e-commerce storefront built with Next.js (frontend) and an optional Express + TypeScript backend located in `/server`. It showcases product pages, an admin area, and a small mock API for demos.
+Wesbite for Customer 
+Secure Admin Panel to manage
 
 ---
 
@@ -109,5 +111,3 @@ npm run lint
 This project is licensed under the **MIT License** — see the `LICENSE` file.
 
 ---
-
-If you'd like, I can add badges, an architecture diagram, or expand the developer guide (testing, CI, code styles). Tell me which sections you'd like expanded.
