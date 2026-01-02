@@ -1,8 +1,9 @@
 # Lorenzo Store 🛒
 
 **Lorenzo Store** is a sample e-commerce storefront built with Next.js (frontend) and an optional Express + TypeScript backend located in `/server`. It showcases product pages, an admin area, and a small mock API for demos.
-Wesbite for Customer 
-Secure Admin Panel to manage
+**Wesbite for Customers**
+**Secure Admin Panel to manage**
+**https://thelorenzo.vercel.app/admin/login**
 
 ---
 
